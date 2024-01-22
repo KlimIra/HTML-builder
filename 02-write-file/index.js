@@ -1,5 +1,6 @@
 const fs = require('node:fs');
 const readline = require('node:readline');
+const path = require('node:path');
 // const path = require('path').posix;
 
 const rl = readline.createInterface({
@@ -7,7 +8,7 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-const filePath = './text.txt';
+const filePath = path.join(__dirname, 'text.txt');
 
 // Проверяем, существует ли файл. Если нет, создаем его.
 
@@ -32,7 +33,7 @@ console.log('Привет! Введите текст:');
 // Ожидаем ввода от пользователя
 rl.on('line', (input) => {
   // Если пользователь ввел "exit", завершаем процесс
-  if (input === 'exit') {
+  if (input.toLowerCase() === 'exit') {
     console.log('Прощай!'); // Фраза прощания
     rl.close();
     process.exit(0);
